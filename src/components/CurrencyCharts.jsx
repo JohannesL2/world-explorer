@@ -29,8 +29,8 @@ function CurrencyChart({country, currencyCode, setCurrencyCode, targetCurrency, 
   if (!country || !country.currencies) return <p>Ingen valutadata tillgänglig</p>;
 
 return (
-    <div className='w-full h-96 p-4 rounded-xl shadow-lg backdrop-blur-md bg-white/10 border border-white/20'>
-        <div>
+    <div className='w-full p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/20'>
+        <div className='flex flex-col sm:flex-row sm:items-center gap-2 mb-2'>
             <label>Compare with:</label>
             <select
                 value={targetCurrency}
@@ -43,10 +43,8 @@ return (
         </div>
 
     
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" aspect={1.8}>
       <LineChart
-        width={500}
-        height={300}
         data={chartsData}
         margin={{
           top: 5,

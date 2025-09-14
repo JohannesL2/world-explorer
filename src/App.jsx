@@ -40,7 +40,8 @@ function App() {
       }
     }}
     >
-    <input className='bg-gray-200 p-4 rounded-2xl text-3xl focus:outline-none focus:ring-2 focus:ring-purple-400' value={queryInput} type="text" placeholder='Search for a country...' onChange={(e) => setQueryInput(e.target.value)}/>
+    <div className='flex flex-col md:flex-row md:items-center gap-2 mb-4 justify-center'>
+    <input className='bg-gray-200 p-4 rounded-2xl text-3xl focus:outline-none focus:ring-2 focus:ring-purple-400 w-full' value={queryInput} type="text" placeholder='Search for a country...' onChange={(e) => setQueryInput(e.target.value)} autoFocus/>
     <button className='
     bg-gradient-to-r from-purple-500 to-pink-500
     text-white
@@ -55,8 +56,9 @@ function App() {
     hover:shadow-2xl
     active:scale-95
     active:shadow-md
-    cursor-pointer'> <FaMagnifyingGlass size={24} className="mr-2" />
+    cursor-pointer w-full md:w-48 h-full'> <FaMagnifyingGlass size={24} className="mr-2" />
   <span className="font-semibold text-lg">Search</span></button>
+  </div>
   </form>
     </div>
     
