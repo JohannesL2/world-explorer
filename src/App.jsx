@@ -3,6 +3,7 @@ import './App.css'
 import ReactCountryFlag from 'react-country-flag'
 import CurrencyChart from './components/CurrencyCharts'
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import NewCurrencyCharts from './components/NewCurrencyCharts';
 
 function App() {
   const [query, setQuery] = useState('')
@@ -75,10 +76,10 @@ function App() {
         <h3 className='text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent'>{country.name.common} - {currencyCode} → {targetCurrency} (Last 30 days) </h3>
         <div className='w-full h-80 md:h-96'>
               <CurrencyChart country={country} currencyCode={currencyCode} setCurrencyCode={setCurrencyCode} targetCurrency={targetCurrency} setTargetCurrency={setTargetCurrency}/>
+              <NewCurrencyCharts />
         </div>
         
       </div>
-
       </div>
     ))}
     </div>
