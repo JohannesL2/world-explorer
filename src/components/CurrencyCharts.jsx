@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import NewCurrencyCharts from './NewCurrencyCharts';
 
-function CurrencyChart({country, currencyCode, setCurrencyCode, targetCurrency, setTargetCurrency}) {
-  const [chartsData, setChartsData] = useState([]);
+function CurrencyChart({country, currencyCode, setCurrencyCode, targetCurrency, setTargetCurrency, chartsData, setChartsData}) {
 
   useEffect(() => {
     setCurrencyCode(Object.keys(country.currencies)[0])
@@ -64,8 +63,6 @@ return (
         <Tooltip formatter={(value) => value.toFixed(4)}/>
       </LineChart>
     </ResponsiveContainer>
-
-    <NewCurrencyCharts chartsData={chartsData} />
         </div>
 )
 }

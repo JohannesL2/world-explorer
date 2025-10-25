@@ -11,6 +11,7 @@ function App() {
   const [data, setData] = useState('')
   const [currencyCode, setCurrencyCode] = useState([]);
   const [targetCurrency, setTargetCurrency] = useState('');
+  const [chartsData, setChartsData] = useState([]);
 
   async function getData() {
     fetch(`https://restcountries.com/v3.1/name/${queryInput}`)
@@ -72,11 +73,11 @@ function App() {
         <p>Population: {country.population.toLocaleString()}</p>
         </div>
 
-      <div className="w-full max-w-4xl mx-auto p-4 bg-white shadow-lg rounded-xl">
+      <div className="w-full h-screen max-w-4xl mx-auto p-4 bg-white shadow-lg rounded-xl">
         <h3 className='text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent'>{country.name.common} - {currencyCode} → {targetCurrency} (Last 30 days) </h3>
         <div className='w-full h-80 md:h-96'>
-              <CurrencyChart country={country} currencyCode={currencyCode} setCurrencyCode={setCurrencyCode} targetCurrency={targetCurrency} setTargetCurrency={setTargetCurrency}/>
-              <NewCurrencyCharts />
+              <CurrencyChart country={country} currencyCode={currencyCode} setCurrencyCode={setCurrencyCode} targetCurrency={targetCurrency} setTargetCurrency={setTargetCurrency} chartsData={chartsData} setChartsData={setChartsData}/>
+                  <NewCurrencyCharts chartsData={chartsData} />
         </div>
         
       </div>

@@ -1,5 +1,6 @@
 import "chart.js/auto";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
+import "chartjs-adapter-date-fns";
 import { useMemo } from 'react';
 
 export default function NewCurrencyCharts({chartsData}) {
@@ -9,13 +10,21 @@ export default function NewCurrencyCharts({chartsData}) {
 
 
     const data = useMemo(() => ({
-        labels: chartsData.map(item => item.date),
         datasets: [
-            {
-                label: 'Exchange Rate',
-                data: chartsData.map(item => item.value),
-            }
-        ]
+     {
+       label: "Exchange Rate",
+       data: chartsData.map(item => ({
+         x: item.date,
+         y: parseFloat(item.value),
+       })),
+       borderColor: "#ec4899",
+       backgroundColor: "rgba(236, 72, 153, 0.3)",
+       borderWidth: 3,
+       tension: 0.3,
+       pointRadius: 3,
+       pointHoverRadius: 6,
+     },
+   ],
     }), [chartsData]);
 
     const options = {
@@ -26,8 +35,13 @@ export default function NewCurrencyCharts({chartsData}) {
         },
         scales: {
             x: {
-                ticks: {color: 'white', font: { size: 12}},
-                grid: {color: 'rgba(255,255,255,0.1)' },
+                type: 'time',
+                time: {
+                    unit: 'day',
+                    displayFormats: { day: 'MMM d' },
+                },
+                ticks: { color: 'white', font: { size: 12 } },
+                grid: { color: 'rgba(255,255,255,0.1)' },
             },
       y: {
         ticks: { color: 'white', font: { size: 12 } },
@@ -40,14 +54,10 @@ export default function NewCurrencyCharts({chartsData}) {
     },
   };
 
-  if (!chartsData.length) {
-    return <p className="text-gray-400 text-sm">Laddar valutadata...</p>;
-  }
-
   return (
     <div>
-            <div className="w-full mt-8 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/20">
-      <Bar data={data} options={options} />
+            <div className="w-full mt-8 p-4 mt-80 rounded-xl backdrop-blur-md bg-white/10 border border-white/20">
+      <Line data={data} options={options} />
     </div>
 
     </div>
