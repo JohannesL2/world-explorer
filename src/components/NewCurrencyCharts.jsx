@@ -1,5 +1,5 @@
 import "chart.js/auto";
-import { Line } from "react-chartjs-2";
+import { Bubble } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import { useMemo } from 'react';
 
@@ -57,8 +57,11 @@ export default function NewCurrencyCharts({chartsData}) {
 
   return (
     <div>
-            <div className="w-full mt-8 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/20">
-      <Line data={data} options={options} />
+            <div className="w-full mt-80 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/20">
+      <Bubble
+        data={data} 
+        options={options}
+      />
     </div>
 
     </div>
